@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <h1><u>Digital clock<u/><h1/>
+    <style>
+        #clockContainer {
+            position: relative;
+            margin: auto;
+            height: 40vw;
+            /* To make the height and width responsive */
+            width: 40vw;
+            background: url("https://media.geeksforgeeks.org/wp-content/uploads/20210302161254/imgonlinecomuaCompressToSizeOmNATjUMFKw-300x300.jpg") no-repeat;
+            /* Set the background image link here */
+            background-size: 100%;
+        }
+
+        #hour,
+        #minute,
+        #second {
+            position: absolute;
+            background: black;
+            border-radius: 10px;
+            transform-origin: bottom;
+            /* Position the hands at the center of the clock */
+            left: 50%;
+            top: 50%;
+            opacity: 0.8;
+        }
+
+        #hour {
+            width: 1.8%;
+            height: 25%;
+            transform: translateX(-50%) translateY(-100%) rotate(0deg);
+        }
+
+        #minute {
+            width: 1.6%;
+            height: 30%;
+            transform: translateX(-50%) translateY(-100%) rotate(0deg);
+        }
+
+        #second {
+            width: 1%;
+            height: 40%;
+            transform: translateX(-50%) translateY(-100%) rotate(0deg);
+        }
+    </style>
+    <script>
+        setInterval(() => {
+            d = new Date(); // Object of date()
+            hr = d.getHours();
+            min = d.getMinutes();
+            sec = d.getSeconds();
+            hr_rotation = 30 * hr + min / 2; // Converting current time
+            min_rotation = 6 * min;
+            sec_rotation = 6 * sec;
+
+            hour.style.transform = `translateX(-50%) translateY(-100%) rotate(${hr_rotation}deg)`;
+            minute.style.transform = `translateX(-50%) translateY(-100%) rotate(${min_rotation}deg)`;
+            second.style.transform = `translateX(-50%) translateY(-100%) rotate(${sec_rotation}deg)`;
+        }, 1000);
+    </script>
+</head>
+<body>
+    <div id="clockContainer">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+</body>
+</html>
